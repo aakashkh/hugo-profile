@@ -1,18 +1,35 @@
-{{ if .Site.Params.skills.enable }}
+{{ if .Site.Params.skills.enable | default false }}
 <section id="skills" class="py-0 py-sm-5">
     <div class="container bg-transparent">
-        <h3 class="text-center bg-transparent">{{ .Site.Params.skills.title | default "Skills" }}</h3>
-        <div class="bg-transparent row justify-content-center px-3 py-5">
-            <div class="col-sm-12 col-md-12 col-lg-8 content">
+        {{ with .Site.Params.skills.title }}
+            <h3 class="text-center bg-transparent">{{ . }}</h3>
+        {{ end }}
+        {{ with .Site.Params.skills.subtitle }}
+            <p class="text-center text-muted mb-5">{{ . }}</p>
+        {{ end }}
+
+        <div class="skills-container">
+            {{ range .Site.Params.skills.categories }}
+            <div class="skills-category">
+                <h3 class="skills-category-title">{{ .name }}</h3>
+                {{ with .description }}
+                    <p class="skills-category-description">{{ . }}</p>
+                {{ end }}
+                
                 <div class="skills-grid">
-                    {{ range .Site.Params.skills.list }}
+                    {{ range .items }}
                     <div class="skill-item">
-                      <img src="{{ $.Site.Params.staticPath }}{{ .image }}" alt="{{ .name }} logo">
-                      <span>{{ .name }}</span>
+                        {{ if .image }}
+                        <div class="skill-logo-container">
+                            <img src="{{ .image }}" alt="{{ .name }}" class="skill-logo" loading="lazy">
+                        </div>
+                        {{ end }}
+                        <span class="skill-name">{{ .name }}</span>
                     </div>
                     {{ end }}
                 </div>
             </div>
+            {{ end }}
         </div>
     </div>
 </section>

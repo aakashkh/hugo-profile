@@ -125,3 +125,58 @@ li > .dropdown-toggle:focus{
 #search-results .card a:hover {
     color: var(--primary-color) !important;
 }
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 4px;
+    background: #d7e4ed;
+}
+
+.timeline-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item-content {
+    margin-left: 40px;
+    background: #f0f0f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.timeline-item-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #f0f0f0;
+}
+
+.timeline-item-date {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item-description {
+    margin: 0;
+    color: #555;
+}
