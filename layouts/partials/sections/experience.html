@@ -25,88 +25,37 @@
 
                     <div class="tab-content pb-3 bg-transparent primary-font" id="pills-tabContent">
                         {{ range $index, $element := .Site.Params.experience.items }}
-                            {{ $company := .company }}
-                            {{ $companyUrl := .companyUrl }}
                             <div 
                                 class="tab-pane fade bg-transparent {{ if eq $index 0 }}show active{{ end }}"
                                 role="tabpanel"
-                                id='pills-{{ replace $company " " "-" }}-{{ replace .date " " "-" }}'
-                                aria-labelledby='pills-{{ replace $company " " "-" }}-{{ replace .date " " "-" }}-tab'
+                                id='pills-{{ replace $element.company " " "-" }}-{{ replace $element.date " " "-" }}'
+                                aria-labelledby='pills-{{ replace $element.company " " "-" }}-{{ replace $element.date " " "-" }}-tab'
                             >
-                                {{ range $jobIdx, $job := .jobs }}
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="h4">{{ $element.company }}</span>
+                                    <a href="{{ $element.company_url }}" target="_blank">Visit Website</a>
+                                </div>
+                                <hr>
+                                {{ range $roleIdx, $role := $element.roles }}
                                     <div>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                <span class="{{ if eq $jobIdx 0 }}h4{{ else }}h5{{ end }}">{{ $job.name }}</span>
-                                                
-                                                {{ if $job.info.content }}
-                                                    <span class="p-2">
-                                                        <span 
-                                                            style="cursor: pointer;" 
-                                                            data-bs-toggle="tooltip" 
-                                                            data-bs-placement="top" 
-                                                            data-bs-original-title={{$job.info.content}}
-                                                        > 
-                                                            <i class="fas fa-info-circle fa-xs"></i>
-                                                        </span>
-                                                    </span>
-                                                {{ end }}
-                                                
-                                                {{ if eq $jobIdx 0 }}
-                                                    <small>-</small>
-                                                    <a href="{{ $companyUrl }}" target="_blank">{{ $company }}</a>
-                                                {{ end }}
+                                                <span class="h5">{{ $role.title }}</span>
                                             </div>
                                             <div class="d-block">
-                                                <small>{{ $job.date }}</small>
-                                                {{ if $job.featuredItems }}
-                                                    <div class="featuredLink list-inline d-flex justify-content-end align-items-center">
-                                                        {{ range $job.featuredItems.fontAwesomeIcons }}
-                                                            <div class="list-inline-item">
-                                                                <a
-                                                                    href="{{ .url }}"
-                                                                    target="_blank"
-
-                                                                    {{ if .tooltip}}
-                                                                        data-bs-toggle="tooltip" 
-                                                                        data-bs-placement="top" 
-                                                                        data-bs-original-title={{.tooltip}}
-                                                                    {{ end }}
-                                                                >
-                                                                    <i class="{{ .icon }}"></i>
-                                                                </a>
-                                                            </div>
-                                                        {{ end }}
-
-                                                        {{ range $job.featuredItems.customIcons }}
-                                                            <div class="list-inline-item">
-                                                                <a
-                                                                    class="d-flex align-items-center justify-content-between" 
-                                                                    href="{{ .url }}" 
-                                                                    target="_blank"
-
-                                                                    {{ if .tooltip}}
-                                                                        data-bs-toggle="tooltip" 
-                                                                        data-bs-placement="top" 
-                                                                        data-bs-original-title={{.tooltip}}
-                                                                    {{ end }}
-                                                                >
-                                                                    <img src="{{ .icon }}">
-                                                                </a>
-                                                            </div>
-                                                        {{ end }}
-                                                    </div>
-                                                {{ end }}
+                                                <small>{{ $role.duration }}</small>
                                             </div>
                                         </div>
 
                                         <div class="pb-2 pb-3">
-                                            {{ $job.content | markdownify}}
+                                            {{ $role.description | markdownify}}
                                         </div>
+                                        {{ if ne $roleIdx (sub (len $element.roles) 1) }}
+                                            <hr>
+                                        {{ end }}
                                     </div>
                                 {{ end }}
                             </div>
-                        
                         {{ end }}
                     </div>
                 </div>
