@@ -1,9 +1,9 @@
 {{ if .Site.Params.skills.enable }}
-<section id="skills" class="py-5">
-    <div class="container">
-        <h3 class="text-center">{{ .Site.Params.skills.title | default "Skills" }}</h3>
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-8 col-lg-8 py-5">
+<section id="skills" class="py-0 py-sm-5">
+    <div class="container bg-transparent">
+        <h3 class="text-center bg-transparent">{{ .Site.Params.skills.title | default "Skills" }}</h3>
+        <div class="bg-transparent row justify-content-center px-3 py-5">
+            <div class="col-sm-12 col-md-12 col-lg-8 content">
                 <div class="skills-grid">
                     {{ range .Site.Params.skills.list }}
                     <div class="skill-item">
