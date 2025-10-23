@@ -31,10 +31,12 @@
                                 id='pills-{{ replace $element.company " " "-" }}-{{ replace $element.date " " "-" }}'
                                 aria-labelledby='pills-{{ replace $element.company " " "-" }}-{{ replace $element.date " " "-" }}-tab'
                             >
+                            <!---
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span class="h4">{{ $element.company }}</span>
                                     <a href="{{ $element.company_url }}" target="_blank">Visit Website</a>
                                 </div>
+                            -->
                                 <hr>
                                 {{ range $roleIdx, $role := $element.roles }}
                                     <div>

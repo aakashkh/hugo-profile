@@ -1,0 +1,19 @@
+{{ if .Site.Params.skills.enable }}
+<section id="skills" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.skills.title | default "Skills" }}</h3>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8 py-5">
+                <div class="skills-grid">
+                    {{ range .Site.Params.skills.list }}
+                    <div class="skill-item">
+                      <img src="{{ $.Site.Params.staticPath }}{{ .image }}" alt="{{ .name }} logo">
+                      <span>{{ .name }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
