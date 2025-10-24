@@ -2,7 +2,7 @@
 <section id="skills" class="py-0 py-sm-5">
     <div class="container bg-transparent">
         {{ with .Site.Params.skills.title }}
-            <h3 class="text-center bg-transparent">{{ . }}</h3>
+            <h3 class="text-center bg-transparent section-title">{{ . }}</h3>
         {{ end }}
         {{ with .Site.Params.skills.subtitle }}
             <p class="text-center text-muted mb-5">{{ . }}</p>
@@ -11,7 +11,7 @@
         <div class="skills-container">
             {{ range .Site.Params.skills.categories }}
             <div class="skills-category">
-                <h3 class="skills-category-title">{{ .name }}</h3>
+                <h4 class="skills-category-title">{{ .name }}</h4>
                 {{ with .description }}
                     <p class="skills-category-description">{{ . }}</p>
                 {{ end }}

@@ -1,5 +1,5 @@
 {{ if .Site.Params.hero.enable | default false }}
-<section id="hero" class="py-5 align-middle">
+<section id="hero" class="py-3 align-middle">
     <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 content {{ if .Site.Params.animate }}animate{{ end }}" id="primary-font">
@@ -12,9 +12,14 @@
                 <h2>
                     {{ .Site.Params.hero.subtitle }}
                 </h2>
+                <div class="typed-text-container">
+                    <span class="typed-text"></span>
+                </div>
                 <p class="hero-content">
                     {{ .Site.Params.hero.content | markdownify }}
                 </p>
+
+                <!--
                 <div class="row">
                     <div class="col-auto h-100">
                         {{ if .Site.Params.hero.button.enable }}
@@ -30,43 +35,9 @@
                         {{- partial "sections/hero/social.html" . -}}
                     </div>
                 </div>
-                
-                <!-- Timeline Section -->
-                {{ if .Site.Params.timeline.enable }}
-                <div class="timeline-container mt-5">
-                    <div class="pattern-overlay">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 201 201" preserveAspectRatio="none">
-                            <g transform="translate(-384 -1392)">
-                                <rect width="12" height="2" rx="1" transform="translate(391 1392) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1500) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1446) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1554) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1419) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1527) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1473) rotate(90)" fill="#282f49"></rect>
-                                <rect width="12" height="2" rx="1" transform="translate(391 1581) rotate(90)" fill="#282f49"></rect>
-                            </g>
-                        </svg>
-                    </div>
-                    <h3 class="timeline-title">{{ .Site.Params.timeline.title }}</h3>
-                    <p class="timeline-subtitle">{{ .Site.Params.timeline.subtitle }}</p>
-                    <div class="timeline">
-                        {{ range .Site.Params.timeline.events }}
-                        <div class="timeline-item">
-                            <div class="timeline-dot">
-                                <i class="fas {{ .icon }}"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4>{{ .title }}</h4>
-                                <span class="timeline-date">{{ .date }}</span>
-                                <p>{{ .description }}</p>
-                            </div>
-                        </div>
-                        {{ end }}
-                    </div>
-                </div>
-                {{ end }}
+            -->
             </div>
+            <!--
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="row justify-content-center">
                     <div class="col-sm-12 col-md-9 pt-5 image {{ if .Site.Params.animate }}animate{{ end }} px-5 px-md-5 px-lg-0 text-center">
@@ -76,167 +47,9 @@
                         >
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-    {{ if .Site.Params.hero.bottomImage.enable | default true }}
-    <div class="hero-bottom-svg d-md-block d-lg-block d-none">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
-            <path fill="var(--card-bg)" fill-opacity="1" d="M0,96L48,106.7C96,117,192,139,288,138.7C384,139,480,117,576,112C672,107,768,117,864,128C960,139,1056,149,1152,149.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-    </div>
-    {{ end }}
+
 </section>
-
-<!-- Timeline Styles -->
-<style>
-.timeline-container {
-    margin-top: 2rem;
-    padding: 2.5rem 2rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.pattern-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.05;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.timeline-title {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-    font-size: 1.8rem;
-    position: relative;
-    z-index: 1;
-}
-
-.timeline-subtitle {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-size: 1rem;
-    position: relative;
-    z-index: 1;
-}
-
-.timeline {
-    position: relative;
-    z-index: 1;
-}
-    padding-left: 1.5rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 9px;
-    width: 2px;
-    background: var(--border-color);
-}
-
-.timeline-item {
-    position: relative;
-    padding-left: 3rem;
-    margin-bottom: 2.5rem;
-    transition: transform 0.3s ease;
-}
-
-.timeline-item:hover {
-    transform: translateX(5px);
-}
-
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.3);
-    transition: all 0.3s ease;
-}
-
-.timeline-item:hover .timeline-dot {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.4);
-}
-
-.timeline-content {
-    position: relative;
-    padding-left: 1.5rem;
-    border-left: 2px solid var(--border-color);
-    padding-bottom: 1.5rem;
-}
-
-.timeline-item:last-child .timeline-content {
-    border-left-color: transparent;
-    padding-bottom: 0;
-}
-
-.timeline-content h4 {
-    margin: 0 0 0.5rem 0;
-    color: var(--heading-color);
-    font-size: 1.1rem;
-}
-
-.timeline-date {
-    display: inline-block;
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 0.2rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-}
-
-.timeline-content p {
-    margin: 0.5rem 0 0 0;
-    color: var(--text-muted);
-    line-height: 1.5;
-    font-size: 0.95rem;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .timeline-container {
-        padding: 1rem;
-    }
-    
-    .timeline-content {
-        padding: 1rem;
-    }
-    
-    .timeline-title {
-        font-size: 1.3rem;
-    }
-    
-    .timeline-content h4 {
-        font-size: 1rem;
-    }
-    
-    .timeline-content p {
-        font-size: 0.9rem;
-    }
-}
-</style>
 {{ end }}

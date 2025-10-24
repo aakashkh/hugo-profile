@@ -2,6 +2,23 @@
 
 #projects h3 {
     color: var(--text-secondary-color) !important;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+#projects h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 0.8rem auto 0;
+    border-radius: 2px;
 }
 
 #projects a {

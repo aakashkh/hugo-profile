@@ -1,4 +1,8 @@
-/* Skills Section */
+/* ====================================
+   Skills Section - Clean Implementation
+   ==================================== */
+
+/* Main Section Container */
 #skills {
     padding: 4rem 0;
     background-color: var(--bg-color);
@@ -13,17 +17,19 @@
     padding: 0 1.5rem;
 }
 
-#skills h3 {
+/* Section Title */
+#skills > .container > h3.section-title {
     text-align: center;
     font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
+    margin-bottom: 2rem;
+    color: var(--text-secondary-color);
     opacity: 0.9;
     position: relative;
     padding-bottom: 0.5rem;
+    font-size: 1.75rem;
 }
 
-#skills h3::after {
+#skills > .container > h3.section-title::after {
     content: '';
     display: block;
     width: 60px;
@@ -33,16 +39,18 @@
     border-radius: 2px;
 }
 
-#skills .text-muted {
-    color: var(--text-secondary-color) !important;
-    font-family: "Open Sans", sans-serif;
+/* Section Subtitle */
+#skills > .container > .text-muted {
+    color: var(--text-secondary-color);
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 3rem;
     text-align: center;
     opacity: 0.8;
+    display: block;
 }
 
+/* Skills Container */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -50,13 +58,17 @@
     margin-top: 2rem;
 }
 
+/* Skills Category Card */
 .skills-category {
     background: var(--card-bg);
-    border-radius: 10px;
+    border-radius: 0.5rem;
     padding: 1.5rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--primary-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .skills-category:hover {
@@ -64,19 +76,114 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.skills-category h3 {
+/* Skills Category Title - Matches About Section Subheaders */
+.skills-category > h3.skills-category-title {
     color: var(--primary-color);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.4;
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    position: relative;
+    background: none;
+    opacity: 1;
 }
 
-.skills-category p {
+/* Skills Category Description */
+.skills-category > .skills-category-description {
     color: var(--text-secondary-color);
     font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.25rem;
+    margin-top: auto;
+}
+
+/* Skill Item */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-logo-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.skill-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) contrast(0.8);
+    transition: filter 0.3s ease;
+}
+
+.skill-item:hover .skill-logo {
+    filter: grayscale(0) contrast(1);
+}
+
+.skill-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skills-category {
+        padding: 1.25rem;
+    }
+    
+    .skills-category-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 1rem;
+    }
 }
 
 .skills-grid {
